@@ -1,3 +1,4 @@
+import NotesList from '@/components/NotesList'
 import Sidebar from '@/components/Sidebar'
 import React from 'react'
 
@@ -9,7 +10,9 @@ function Home() {
 
       <div>
         {/* notes list */}
-
+        <div className='w-[280px] border-r border-gray-600 h-full'>
+          <NotesList />
+        </div>
         {/* note section */}
       </div>
     </div>

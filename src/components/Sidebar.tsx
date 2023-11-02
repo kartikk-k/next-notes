@@ -1,10 +1,8 @@
-import { InfoCircle, Keyboard, Setting2, Stickynote, Tag, Trash } from 'iconsax-react'
-import { WifiIcon } from 'lucide-react'
-import React from 'react'
+import { InfoCircle, Setting2, Stickynote, Trash } from 'iconsax-react'
 
 function Sidebar() {
     return (
-        <div className='bg-secondary text-xs flex flex-col justify-between font-medium text-gray-400 p-4 py-6'>
+        <div className='bg-secondary border-r border-gray-600 text-xs flex flex-col justify-between font-medium text-gray-400 p-4 py-6'>
             {/* top */}
             <div className='space-y-6'>
                 {/* navigation */}
@@ -29,6 +27,8 @@ function Sidebar() {
                         <span>Trash</span>
                     </button>
                 </div>
+
+                <hr className='border-gray-700' />
 
                 {/* labels */}
                 <div className='p-2 space-y-4'>
