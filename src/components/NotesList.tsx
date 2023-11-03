@@ -1,6 +1,5 @@
-import { Additem, HambergerMenu, NoteAdd, SearchNormal } from 'iconsax-react'
+import { HambergerMenu, NoteAdd, SearchNormal1 } from 'iconsax-react'
 import { Pin } from 'lucide-react'
-import React from 'react'
 
 function NotesList() {
     return (
@@ -19,8 +18,8 @@ function NotesList() {
             </div>
 
             {/* search */}
-            <div className=' p-4 border-b border-b-gray-600 flex items-center gap-2'>
-                <SearchNormal variant='TwoTone' size={16} />
+            <div className=' px-4 py-2.5 border-b border-b-gray-600 flex items-center gap-2'>
+                <SearchNormal1 variant='TwoTone' size={16} />
                 <input
                     type="text"
                     placeholder='Search all notes...'
