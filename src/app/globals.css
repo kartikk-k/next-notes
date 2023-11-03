@@ -58,3 +58,18 @@
 .markdown-preview td {
     @apply border border-gray-500 p-1;
 }
+
+/* width */
+::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    @apply bg-black/40; 
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    @apply bg-tertiary rounded-lg; 
+  }

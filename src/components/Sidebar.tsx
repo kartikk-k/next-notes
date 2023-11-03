@@ -3,7 +3,7 @@ import Link from 'next/link'
 
 function Sidebar() {
     return (
-        <div className='bg-secondary border-r border-gray-600 text-xs flex flex-col justify-between font-medium text-gray-400'>
+        <div className='bg-secondary relative z-10 border-r border-gray-600 text-xs flex flex-col justify-between font-medium text-gray-400'>
             {/* top */}
             <div className='space-y-4'>
                 <Link href={'/'} className='flex items-center text-white gap-2 border-b p-4 border-gray-600'>

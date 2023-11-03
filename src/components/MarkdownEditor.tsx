@@ -1,6 +1,5 @@
 import React, { useRef } from 'react'
 import Markdown from 'react-markdown'
-import { AnimatePresence, motion } from 'framer-motion'
 import rehypeRaw from 'rehype-raw'
 import rehypeHighlight from 'rehype-highlight'
 import remarkGfm from 'remark-gfm'

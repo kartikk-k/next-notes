@@ -4,15 +4,20 @@ import React from 'react'
 import { InfoCircle, More, SidebarLeft, Task } from 'iconsax-react'
 import MarkdownEditor from './MarkdownEditor'
 
-function NoteEditor() {
+interface props {
+    isOpen: boolean
+    onClick: (isOpen: boolean) => void
+}
+
+function NoteEditor({ isOpen, onClick }: props) {
 
     const [preview, setPreview] = React.useState(false)
 
     return (
-        <div className='text-gray-400 flex flex-col text-sm h-screen'>
+        <div className='text-gray-400 flex flex-col text-sm h-screen bg-background'>
             {/* header */}
             <div className='p-4 flex shrink-0 items-center justify-between border-b border-gray-600'>
-                <button>
+                <button onClick={() => onClick(!isOpen)}>
                     <SidebarLeft variant='TwoTone' size={18} />
                 </button>
 
