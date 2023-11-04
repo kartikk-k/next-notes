@@ -4,7 +4,7 @@ import React from 'react'
 import NoteEditor from '@/components/NoteEditor'
 import NotesList from '@/components/NotesList'
 import Sidebar from '@/components/Sidebar'
-import { AnimatePresence, motion } from 'framer-motion'
+import { motion } from 'framer-motion'
 
 function Home() {
   const [isListOpen, setIsListOpen] = React.useState(true)
@@ -39,6 +39,7 @@ function Home() {
         </motion.div>
 
       </div>
+
     </div>
   )
 }

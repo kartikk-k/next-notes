@@ -1,7 +1,14 @@
-import { HambergerMenu, NoteAdd, SearchNormal1 } from 'iconsax-react'
+"use client"
+
+import { HambergerMenu, SearchNormal1 } from 'iconsax-react'
 import { Pin } from 'lucide-react'
+import CreateNewNote from './CreateNewNote'
+import { useNotesStore } from '@/stores/NotesStore'
+import { motion } from 'framer-motion'
+
 
 function NotesList() {
+    const { notes } = useNotesStore()
     return (
         <div className='text-xs font-medium text-gray-400'>
             {/* header */}
@@ -12,9 +19,7 @@ function NotesList() {
 
                 <span className='text-white'>All Notes</span>
 
-                <button>
-                    <NoteAdd variant='TwoTone' size={18} />
-                </button>
+                <CreateNewNote />
             </div>
 
             {/* search */}
@@ -29,19 +34,30 @@ function NotesList() {
 
             {/* notes list */}
             <div className='p-4 font-normal relative space-y-4'>
-                <div className='bg-tertiary/70 cursor-pointer select-none space-y-1 p-2 rounded-lg'>
-                    <h1 className='text-white'>Welcome to Git Notes</h1>
-                    <p className='text-gray-300'>Git notes is an offline first note taking app with minimal...</p>
+                {notes.map(note => (
 
-                    {/* pinned note */}
-                    <Pin size={12} className='absolute top-[16px] right-[20px] fill-green-500 stroke-green-500 rotate-45' />
-                </div>
+                    <motion.div key={note.id} layout className={`${!true ? 'bg-tertiary/70' : ''}  ursor-pointer select-none bg-background hover:bg-tertiary/30 space-y-1 p-2 rounded-lg`}>
+                        <h1 className='text-white'>{note.title}</h1>
 
-                <div className='space-y-1 p-2 rounded-lg cursor-pointer select-none hover:bg-tertiary/30'>
+                        {note.content && (
+                            <p className='text-gray-300'>{note.content.slice(0, 100)}</p>
+                        )}
+
+                        {/* pinned note */}
+                        {note.pinned && (
+                            <Pin size={12} className='absolute top-[16px] right-[20px] fill-green-500 stroke-green-500 rotate-45' />
+                        )}
+
+                    </motion.div>
+
+                ))}
+            </div>
+
+            {/* <div className='space-y-1 p-2 rounded-lg cursor-pointer select-none hover:bg-tertiary/30'>
                     <h1 className='text-white'>Exploring cool features</h1>
                     <p className='text-gray-300'>It is a long established fact that a reader will be distracted by the readable...</p>
-                </div>
-            </div>
+                </div> */}
+
         </div>
     )
 }
