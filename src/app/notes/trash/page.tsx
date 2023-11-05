@@ -31,6 +31,7 @@ function Page() {
                     {trashNotes.map(note => (
                         <motion.div
                             layout
+                            key={note.id}
                             className="border space-y-3 border-gray-600 p-4 rounded-xl"
                         >
                             <div className="flex items-center justify-between">
