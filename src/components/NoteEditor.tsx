@@ -24,7 +24,7 @@ function NoteEditor({ isOpen, onClick, note }: props) {
     return (
         <div className='text-gray-400 flex flex-col text-sm h-screen bg-background'>
             {/* header */}
-            <div className='p-4 flex shrink-0 items-center justify-between border-b border-gray-600'>
+            <div className='p-4 h-12 flex shrink-0 items-center justify-between border-b border-gray-600'>
                 <button onClick={() => onClick(!isOpen)}>
                     <SidebarLeft variant='TwoTone' size={18} />
                 </button>

@@ -7,7 +7,7 @@ function Layout({ children }: { children: React.ReactNode }) {
         <div>
             <div className='h-screen subpixel-antialiased bg-background grid grid-cols-[230px,1fr]'>
                 {/* sidebar */}
-                <Sidebar />
+                <Sidebar activeTab={null} />
 
                 {children}
             </div>

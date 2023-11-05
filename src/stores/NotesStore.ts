@@ -12,6 +12,7 @@ type NotesStore = {
     trashNotes: Note[];
 
     addTrashNote: (note: Note) => void;
+    recoverTrashNote: (id: string) => void;
     removeTrashNote: (id: string) => void;
     clearTrash: () => void;
 };
@@ -24,6 +25,18 @@ export const useNotesStore = create<NotesStore>()(persist((set, get) => ({
         const otherNotes = get().notes.filter((n) => !n.pinned);
         set((state) => ({
             notes: [...pinnedNotes, note, ...otherNotes],
+        }));
+    },
+
+    recoverTrashNote: (id) => {
+        const recoveredNote = get().trashNotes.find((n) => n.id === id);
+        // add to notes
+        if (recoveredNote) {
+            get().addNote(recoveredNote);
+        }
+        // remove note form list
+        set((state) => ({
+            trashNotes: state.trashNotes.filter((n) => n.id !== id),
         }));
     },
 

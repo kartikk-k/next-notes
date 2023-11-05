@@ -16,7 +16,7 @@ function Home() {
   return (
     <div className='h-screen subpixel-antialiased bg-background grid grid-cols-[230px,1fr]'>
       {/* sidebar */}
-      <Sidebar />
+      <Sidebar activeTab='ALL_NOTES' />
 
       <div className='flex relative h-screen'>
         {/* notes list */}

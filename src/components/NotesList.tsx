@@ -13,7 +13,7 @@ function NotesList() {
     return (
         <div className='text-xs font-medium text-gray-400'>
             {/* header */}
-            <div className='flex border-b border-b-gray-600 items-center justify-between p-4'>
+            <div className='flex h-12 border-b border-b-gray-600 items-center justify-between p-4'>
                 <button>
                     <HambergerMenu variant='TwoTone' size={18} />
                 </button>

@@ -14,7 +14,7 @@ function NoteItem({ note }: { note: Note }) {
         <motion.div layout className={`${!true ? 'bg-tertiary/70' : ''}  cursor-pointer select-none bg-background hover:bg-tertiary/30 space-y-1 p-2 rounded-lg`}>
             <ContextMenu>
                 <ContextMenuTrigger>
-                    <Link href={`/note/${note.id}`} className='space-y-1'>
+                    <Link href={`/notes/${note.id}`} className='space-y-1'>
                         <h1 className='text-white'>{note.title}</h1>
 
                         {note.content && (
