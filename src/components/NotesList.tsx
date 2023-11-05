@@ -5,6 +5,7 @@ import { Pin } from 'lucide-react'
 import CreateNewNote from './CreateNewNote'
 import { useNotesStore } from '@/stores/NotesStore'
 import { motion } from 'framer-motion'
+import NoteItem from './NoteItem'
 
 
 function NotesList() {
@@ -35,21 +36,7 @@ function NotesList() {
             {/* notes list */}
             <div className='p-4 font-normal relative space-y-4'>
                 {notes.map(note => (
-
-                    <motion.div key={note.id} layout className={`${!true ? 'bg-tertiary/70' : ''}  ursor-pointer select-none bg-background hover:bg-tertiary/30 space-y-1 p-2 rounded-lg`}>
-                        <h1 className='text-white'>{note.title}</h1>
-
-                        {note.content && (
-                            <p className='text-gray-300'>{note.content.slice(0, 100)}</p>
-                        )}
-
-                        {/* pinned note */}
-                        {note.pinned && (
-                            <Pin size={12} className='absolute top-[16px] right-[20px] fill-green-500 stroke-green-500 rotate-45' />
-                        )}
-
-                    </motion.div>
-
+                    <NoteItem key={note.id} note={note} />
                 ))}
             </div>
 

@@ -1,26 +1,43 @@
-import React, { useRef } from 'react'
+import React, { useEffect, useRef } from 'react'
 import Markdown from 'react-markdown'
 import rehypeRaw from 'rehype-raw'
 import rehypeHighlight from 'rehype-highlight'
 import remarkGfm from 'remark-gfm'
+import { useNotesStore } from '@/stores/NotesStore'
 
-function MarkdownEditor({ preview }: { preview: boolean }) {
-    const initialMarkdown = '### Hi, *Pluto*!'
 
-    const [markdown, setMarkdown] = React.useState<string | null>(initialMarkdown)
+interface props {
+    preview: boolean
+    note: Note
+}
+
+function MarkdownEditor({ preview, note }: props) {
+    const initialMarkdown = '### Welcome to Next Git-notes!'
+    const { updateNote } = useNotesStore()
+
+    const [markdown, setMarkdown] = React.useState<string>(note.content)
     const ref = useRef<HTMLDivElement>(null)
 
-    React.useEffect(() => {
+    // set initial markdown state
+    useEffect(() => {
         if (preview) return
         if (ref.current) {
             ref.current.innerText = markdown || ''
         }
     }, [preview])
 
+    // udpate markdown state on content change
     const handleChange = (e: React.ChangeEvent<HTMLDivElement>) => {
         const target = e.target as HTMLDivElement
         setMarkdown(target.innerText)
     }
+
+    useEffect(() => {
+        updateNote(note.id, {
+            ...note,
+            content: markdown
+        })
+    }, [markdown])
 
     return (
         <div className='h-full'>
@@ -40,6 +57,10 @@ function MarkdownEditor({ preview }: { preview: boolean }) {
                     {markdown}
                 </Markdown>
             )}
+
+            {/* {!markdown.trim() && (
+                <span className='absolute top-0 left-0'>start typing here...</span>
+            )} */}
         </div>
     )
 }

@@ -1,17 +1,25 @@
 "use client"
 
-import React from 'react'
+import React, { useEffect } from 'react'
 import { InfoCircle, More, SidebarLeft, Task } from 'iconsax-react'
 import MarkdownEditor from './MarkdownEditor'
+import { Loader2 } from 'lucide-react'
+import Image from 'next/image'
+import NoteNotFoundIllustration from '@/assets/NoteNotFound.svg'
 
 interface props {
     isOpen: boolean
     onClick: (isOpen: boolean) => void
+    note: Note | undefined | null
 }
 
-function NoteEditor({ isOpen, onClick }: props) {
+function NoteEditor({ isOpen, onClick, note }: props) {
 
-    const [preview, setPreview] = React.useState(false)
+    const [preview, setPreview] = React.useState(true)
+
+    useEffect(() => {
+        setPreview(!note?.content ? false : true)
+    }, [note])
 
     return (
         <div className='text-gray-400 flex flex-col text-sm h-screen bg-background'>
@@ -45,9 +53,27 @@ function NoteEditor({ isOpen, onClick }: props) {
 
 
             {/* main content */}
-            <div className='p-4 overflow-y-auto h-full'>
-                <MarkdownEditor preview={preview} />
-            </div>
+
+            {note && (
+                <div className='p-4 overflow-y-auto h-full'>
+                    <MarkdownEditor preview={preview} note={note} />
+                </div>
+            )}
+
+            {note === null && (
+                <div className='p-4 gap-2 overflow-y-auto h-full flex items-center justify-center flex-col'>
+                    <Image src={NoteNotFoundIllustration} alt='note not found' className='w-24' />
+                    <p>Note not found</p>
+                </div>
+            )}
+
+
+            {note === undefined && (
+                <div className='p-4 overflow-y-auto h-full flex items-center justify-center'>
+                    <Loader2 size={24} className='animate-spin' />
+                </div>
+            )}
+
 
         </div>
     )

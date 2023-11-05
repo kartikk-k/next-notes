@@ -35,7 +35,7 @@ function Home() {
           layout
           transition={{ bounce: 0 }}
           className='w-full'>
-          <NoteEditor isOpen={isListOpen} onClick={handleChange} />
+          <NoteEditor isOpen={isListOpen} onClick={handleChange} note={null} />
         </motion.div>
 
       </div>
