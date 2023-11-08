@@ -1,15 +1,14 @@
 "use client"
 
 import { HambergerMenu, SearchNormal1 } from 'iconsax-react'
-import { Pin } from 'lucide-react'
 import CreateNewNote from './CreateNewNote'
 import { useNotesStore } from '@/stores/NotesStore'
-import { motion } from 'framer-motion'
 import NoteItem from './NoteItem'
 
 
 function NotesList() {
     const { notes } = useNotesStore()
+
     return (
         <div className='text-xs font-medium text-gray-400'>
             {/* header */}
@@ -39,11 +38,6 @@ function NotesList() {
                     <NoteItem key={note.id} note={note} />
                 ))}
             </div>
-
-            {/* <div className='space-y-1 p-2 rounded-lg cursor-pointer select-none hover:bg-tertiary/30'>
-                    <h1 className='text-white'>Exploring cool features</h1>
-                    <p className='text-gray-300'>It is a long established fact that a reader will be distracted by the readable...</p>
-                </div> */}
 
         </div>
     )

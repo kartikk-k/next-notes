@@ -7,7 +7,7 @@ import { motion } from "framer-motion"
 
 function Page() {
 
-    const { trashNotes, removeTrashNote, recoverTrashNote } = useNotesStore()
+    const { trashNotes, removeTrashNote, recoverTrashNote, clearTrash } = useNotesStore()
 
     const handleDelete = (id: string) => {
         removeTrashNote(id)
@@ -23,8 +23,11 @@ function Page() {
             <div className='w-full text-xs text-gray-400 font-medium'>
 
                 {/* header */}
-                <div className="p-4 h-12 text-white border-b border-gray-600">
+                <div className="p-4 h-12 flex items-center justify-between text-white border-b border-gray-600">
                     <h1>Trash</h1>
+                    <button onClick={clearTrash} className="text-red-500 font-normal">
+                        Clear all
+                    </button>
                 </div>
 
                 <motion.div layout className="grid grid-cols-3 p-4 gap-4">
