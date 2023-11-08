@@ -6,7 +6,7 @@ import { Trash } from 'iconsax-react'
 import { useNotesStore } from '@/stores/NotesStore'
 import Link from 'next/link'
 
-function NoteItem({ note }: { note: Note }) {
+function NoteItem({ note, active }: { note: Note, active: boolean }) {
 
     const { removeNote, pinNote, unpinNote } = useNotesStore()
 
@@ -16,7 +16,7 @@ function NoteItem({ note }: { note: Note }) {
     }
 
     return (
-        <motion.div layout className={`${!true ? 'bg-tertiary/70' : ''} relative cursor-pointer select-none bg-background hover:bg-tertiary/30 space-y-1 p-2 rounded-lg`}>
+        <motion.div layout className={`${active ? 'bg-tertiary/40' : ''} relative cursor-pointer select-none bg-background hover:bg-tertiary/30 space-y-1 p-2 rounded-lg`}>
             <ContextMenu>
                 <ContextMenuTrigger>
                     <Link href={`/notes/${note.id}`} className='space-y-1'>

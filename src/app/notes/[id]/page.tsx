@@ -11,16 +11,19 @@ function Note() {
     const { id } = useParams<{ id: string }>()
 
     const { notes } = useNotesStore()
+    // const { setActiveNote } = useGeneralStore()
 
     const [isListOpen, setIsListOpen] = React.useState(true)
     const [note, setNote] = React.useState<Note | undefined | null>(undefined)
 
 
     useEffect(() => {
+        if (!id) return
         const note = notes.find(note => note.id === id)
         if (note) setNote(note)
         else setNote(null)
-    }, [])
+
+    }, [id])
 
     const handleChange = (isOpen: boolean) => {
         setIsListOpen(isOpen)
@@ -35,7 +38,7 @@ function Note() {
                 className={`w-[280px] shrink-0 border-r bg-background border-gray-600 h-full
                     ${isListOpen ? 'block' : 'absolute'} left-[-280px]`}
             >
-                <NotesList />
+                <NotesList activeNoteId={id} />
             </motion.div>
 
             {/* note section */}

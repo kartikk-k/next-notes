@@ -6,7 +6,11 @@ import { useNotesStore } from '@/stores/NotesStore'
 import NoteItem from './NoteItem'
 
 
-function NotesList() {
+interface props {
+    activeNoteId: string | null
+}
+
+function NotesList({ activeNoteId }: props) {
     const { notes } = useNotesStore()
 
     return (
@@ -35,7 +39,7 @@ function NotesList() {
             {/* notes list */}
             <div className='p-4 font-normal relative space-y-4'>
                 {notes.map(note => (
-                    <NoteItem key={note.id} note={note} />
+                    <NoteItem key={note.id} note={note} active={activeNoteId === note.id} />
                 ))}
             </div>
 

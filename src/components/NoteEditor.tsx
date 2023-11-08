@@ -6,6 +6,7 @@ import MarkdownEditor from './MarkdownEditor'
 import { Loader2 } from 'lucide-react'
 import Image from 'next/image'
 import NoteNotFoundIllustration from '@/assets/NoteNotFound.svg'
+import moment from 'moment'
 
 interface props {
     isOpen: boolean
@@ -38,9 +39,13 @@ function NoteEditor({ isOpen, onClick, note }: props) {
                         <Task variant='TwoTone' size={18} />
                     </button>
 
-                    <button>
-                        <InfoCircle variant='TwoTone' size={18} />
-                    </button>
+                    <div className='relative group'>
+                        <InfoCircle variant='TwoTone' size={18} className='cursor-pointer' />
+                        <div className='absolute group-hover:inline-flex items-end flex-col hidden mt-2 top-full right-0 p-1.5 text-xs rounded-md bg-secondary border border-gray-600 whitespace-nowrap'>
+                            <p>{moment(note?.createdAt).format('Do MMMM YYYY')}</p>
+                            <p>{moment(note?.createdAt).startOf('day').fromNow()}</p>
+                        </div>
+                    </div>
 
                     <button
                         onClick={() => setPreview(!preview)}
