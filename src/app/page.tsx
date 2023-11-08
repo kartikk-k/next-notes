@@ -27,7 +27,7 @@ function Home() {
           ${isListOpen ? 'block' : 'absolute'} left-[-280px]
           `}
         >
-          <NotesList />
+          <NotesList activeNoteId={null} />
         </motion.div>
 
         {/* note section */}
