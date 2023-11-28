@@ -49,9 +49,9 @@ function NoteEditor({ isOpen, onClick, note }: props) {
 
                     <button
                         onClick={() => setPreview(!preview)}
-                        className={`text-xs ${preview ? 'text-green-600' : 'text-yellow-500'}`}
+                        className={`text-xs ${preview ? 'text-yellow-500' : 'text-green-600'}`}
                     >
-                        Preview
+                        {preview ? 'Edit' : 'Preview'}
                     </button>
                 </div>
             </div>

@@ -32,7 +32,7 @@ function CreateNewNote() {
             </DialogTrigger>
             <DialogContent className='text-sm'>
                 <div>
-                    <h1 className='text-white'>New note</h1>
+                    <h1 className='text-white'>Create note</h1>
                     <p className='text-xs'>Add title to create new note</p>
                 </div>
 

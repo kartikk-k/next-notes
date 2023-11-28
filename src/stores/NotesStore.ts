@@ -17,6 +17,12 @@ type NotesStore = {
     recoverTrashNote: (id: string) => void;
     removeTrashNote: (id: string) => void;
     clearTrash: () => void;
+
+    tags: Tag[];
+
+    addTag: (tag: Tag) => void;
+    removeTag: (id: string) => void;
+    updateTag: (id: string, tag: Tag) => void;
 };
 
 export const useNotesStore = create<NotesStore>()(persist((set, get) => ({
@@ -101,6 +107,24 @@ export const useNotesStore = create<NotesStore>()(persist((set, get) => ({
     clearTrash: () => set((state) => ({
         trashNotes: []
     })),
+
+    tags: [],
+
+    addTag: (tag) => set((state) => ({
+        tags: [tag, ...state.tags]
+    })),
+
+    removeTag: (id) => set((state) => ({
+        tags: state.tags.filter((t) => t.id !== id)
+    })),
+
+    updateTag: (id, tag) => set((state) => ({
+        tags: state.tags.map((t) => (t.id === id ? {
+            ...t,
+            ...tag
+        } : t))
+    })
+    )
 
 }), {
     name: "notes",

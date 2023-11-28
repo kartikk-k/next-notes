@@ -1,5 +1,6 @@
 import { InfoCircle, Notepad2, Setting2, Stickynote, Trash } from 'iconsax-react'
 import Link from 'next/link'
+import TagsEditor from './TagsEditor'
 
 
 interface props {
@@ -43,25 +44,8 @@ function Sidebar({ activeTab }: props) {
                     <hr className='border-gray-700' />
 
                     {/* labels */}
-                    <div className='p-2 space-y-4'>
-                        <div className='flex items-center gap-2 justify-between'>
-                            {/* <Tag variant='TwoTone' size={18} /> */}
-                            <p className='font-normal'>Tags</p>
-                            <button className='text-primary'>Edit</button>
-                        </div>
+                    <TagsEditor />
 
-                        <div className='space-y-2'>
-                            <button className='flex py-1 hover:text-white items-center gap-2 w-full rounded-lg'>
-                                <span className='inline-block w-2 h-2 rounded-md bg-blue-600' />
-                                <span>Typescript</span>
-                            </button>
-
-                            <button className='flex py-1 items-center hover:text-white gap-2 w-full rounded-lg'>
-                                <span className='inline-block w-2 h-2 rounded-md bg-teal-600' />
-                                <span>React</span>
-                            </button>
-                        </div>
-                    </div>
                 </div>
 
             </div>

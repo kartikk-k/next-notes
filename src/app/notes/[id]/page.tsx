@@ -11,7 +11,6 @@ function Note() {
     const { id } = useParams<{ id: string }>()
 
     const { notes } = useNotesStore()
-    // const { setActiveNote } = useGeneralStore()
 
     const [isListOpen, setIsListOpen] = React.useState(true)
     const [note, setNote] = React.useState<Note | undefined | null>(undefined)

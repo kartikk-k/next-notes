@@ -4,6 +4,7 @@ import rehypeRaw from 'rehype-raw'
 import rehypeHighlight from 'rehype-highlight'
 import remarkGfm from 'remark-gfm'
 import { useNotesStore } from '@/stores/NotesStore'
+import { AnimatePresence, motion } from 'framer-motion'
 
 
 interface props {
